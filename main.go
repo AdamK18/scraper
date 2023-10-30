@@ -103,7 +103,6 @@ func runFromLocalFile(ctx context.Context, args *arguments) error {
 	opts := []func(*scrapemateapp.Config) error{
 		// scrapemateapp.WithCache("leveldb", "cache"),
 		scrapemateapp.WithConcurrency(args.concurrency),
-		scrapemateapp.WithExitOnInactivity(args.exitOnInactivityDuration),
 	}
 
 	if args.debug {
@@ -155,7 +154,6 @@ func runFromDatabase(ctx context.Context, args *arguments) error {
 		// scrapemateapp.WithCache("leveldb", "cache"),
 		scrapemateapp.WithConcurrency(args.concurrency),
 		scrapemateapp.WithProvider(provider),
-		scrapemateapp.WithExitOnInactivity(args.exitOnInactivityDuration),
 	}
 
 	if args.debug {

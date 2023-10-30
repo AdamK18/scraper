@@ -58,4 +58,3 @@ linters:
     - unparam
     - whitespace
     - wsl
-

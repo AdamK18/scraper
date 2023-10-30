@@ -23,15 +23,15 @@ func NewGmapJob(langCode, query string, maxDepth int) *GmapJob {
 	query = url.QueryEscape(query)
 
 	const (
-		maxRetries = 3
-		prio       = scrapemate.PriorityLow
+		maxRetries = 3000
+		prio       = scrapemate.PriorityHigh
 	)
 
 	job := GmapJob{
 		Job: scrapemate.Job{
 			ID:         uuid.New().String(),
 			Method:     http.MethodGet,
-			URL:        "https://www.google.com/maps/search/" + query,
+			URL:        "https://www.google.com/maps/search/" + query ,
 			URLParams:  map[string]string{"hl": langCode},
 			MaxRetries: maxRetries,
 			Priority:   prio,
@@ -163,12 +163,12 @@ func scroll(ctx context.Context, page playwright.Page, maxDepth int) (int, error
 
 	var currentScrollHeight int
 	// Scroll to the bottom of the page.
-	waitTime := 100.
+	waitTime := 300.
 	cnt := 0
 
 	const (
 		timeout  = 500
-		maxWait2 = 2000
+		maxWait2 = 4000
 	)
 
 	for i := 0; i < maxDepth; i++ {
@@ -207,7 +207,6 @@ func scroll(ctx context.Context, page playwright.Page, maxDepth int) (int, error
 		if waitTime > maxWait2 {
 			waitTime = maxWait2
 		}
-
 		page.WaitForTimeout(waitTime)
 	}
 

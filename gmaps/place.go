@@ -17,8 +17,8 @@ type PlaceJob struct {
 
 func NewPlaceJob(parentID, langCode, u string) *PlaceJob {
 	const (
-		defaultPrio       = scrapemate.PriorityHigh
-		defaultMaxRetries = 3
+		defaultPrio       = scrapemate.PriorityLow
+		defaultMaxRetries = 10
 	)
 
 	job := PlaceJob{

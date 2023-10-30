@@ -1,0 +1,2 @@
+./google-maps-scraper -input query-cafes.txt -results results-cafes.csv -depth 10000000 -c 8 -lang hu
+./google-maps-scraper -input query-restaurants.txt -results results-restaurants.csv -depth 10000000 -c 8 -lang hu
